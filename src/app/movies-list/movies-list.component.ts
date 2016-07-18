@@ -1,14 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import {AddMovieComponent} from '../add-movie/';
 
 @Component({
   moduleId: module.id,
   selector: 'app-movies-list',
   templateUrl: 'movies-list.component.html',
-  styleUrls: ['movies-list.component.css']
+  styleUrls: ['movies-list.component.css'],
+  directives: [
+    AddMovieComponent
+  ]
 })
 export class MoviesListComponent implements OnInit {
 
   private movies: Array<any>;
+
+  // access local child Component
+  @ViewChild(AddMovieComponent) modal: AddMovieComponent;
 
   constructor() { }
 
@@ -50,6 +57,14 @@ export class MoviesListComponent implements OnInit {
         "synopsis": "Film biographique sur la vie de Ip Man, pionnier du Wing Chun et maitre de Bruce Lee.",
         "rate": "5"
       }];
+  }
+
+  addMovie(movie) {
+    this.movies.push(movie);
+  }
+
+  showModal() {
+    this.modal.openModal();
   }
 
 }
