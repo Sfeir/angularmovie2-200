@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Renderer } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -8,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddMovieComponent implements OnInit {
 
-  constructor() {}
+  private isOpen: boolean = false;
+
+  // access local child DOM element
+  @ViewChild('modal') modal;
+
+  constructor(
+    private renderer: Renderer
+  ) {}
 
   ngOnInit() {
+  }
+
+  openModal() {
+    this.isOpen = true;
+  }
+  closeModal() {
+    this.isOpen = false;
   }
 
 }
