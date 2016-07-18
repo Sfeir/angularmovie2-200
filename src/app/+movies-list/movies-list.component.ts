@@ -1,6 +1,6 @@
 import {Component, ViewChild} from '@angular/core';
 import {ROUTER_DIRECTIVES} from '@angular/router';
-import {MovieFormComponent} from '../movie-form/';
+import {AddMovieComponent} from '../add-movie/';
 import {MoviesService} from '../shared/';
 import {RatePipe} from '../shared/';
 import {Highlight} from '../shared/';
@@ -14,7 +14,7 @@ import {Lazy} from '../shared/';
   providers: [MoviesService],
   pipes: [RatePipe],
   directives: [
-    MovieFormComponent,
+    AddMovieComponent,
     ROUTER_DIRECTIVES,
     Highlight,
     Lazy
@@ -27,7 +27,7 @@ export class MoviesListComponent {
   lastViewDate: Date;
   displayTable: boolean;
 
-  @ViewChild(MovieFormComponent) modal: MovieFormComponent;
+  @ViewChild(AddMovieComponent) modal: AddMovieComponent;
 
   constructor(moviesService: MoviesService) {
     this.moviesService = moviesService;

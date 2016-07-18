@@ -2,11 +2,11 @@ import {Component, EventEmitter, Output, ViewChild} from '@angular/core';
 
 @Component({
   moduleId: module.id,
-  selector: 'movie-form',
-  templateUrl: 'movie-form.component.html',
-  styleUrls: ['movie-form.component.css']
+  selector: 'add-movie',
+  templateUrl: 'add-movie.component.html',
+  styleUrls: ['add-movie.component.css']
 })
-export class MovieFormComponent {
+export class AddMovieComponent {
   movie: Object;
   @Output() movieAdd: EventEmitter<any>;
 

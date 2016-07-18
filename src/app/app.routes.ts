@@ -1,7 +1,7 @@
 import { provideRouter, RouterConfig }  from '@angular/router';
-import { HomeComponent } from './home';
-import { MoviesListComponent } from './movies-list/';
-import { EditMovieComponent } from './edit-movie/';
+import { HomeComponent } from './+home/';
+import { MoviesListComponent } from './+movies-list/';
+import { EditMovieComponent } from './+edit-movie/';
 
 const routes: RouterConfig = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
