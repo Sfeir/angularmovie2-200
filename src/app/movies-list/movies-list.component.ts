@@ -44,6 +44,13 @@ export class MoviesListComponent implements OnInit {
       });
   }
 
+  deleteMovie(index, movie) {
+    this.http.delete(`http://localhost:9000/api/movies/${movie.id}`)
+      .subscribe((resp) => {
+        this.movies.splice(index, 1);
+      });
+  }
+
   showModal() {
     this.modal.openModal();
   }
