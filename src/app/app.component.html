@@ -3,10 +3,10 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
     <section class="container">
-      <a class="brand" href="#/home">Angular2Movie</a>
+      <a class="brand" [routerLink]="['/home']">Angular2Movie</a>
       <ul class="nav">
         <li>
-          <a href="#/movies">Mes films</a>
+          <a [routerLink]="['/movies']">Mes films</a>
         </li>
       </ul>
     </section>
@@ -17,8 +17,7 @@
 
   <!-- home.component -->
 
-  <app-home></app-home>
-  <app-movies-list></app-movies-list>
+  <router-outlet></router-outlet>
 
   <!-- home.component -->
 
