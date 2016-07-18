@@ -9,6 +9,4 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
   directives: [ROUTER_DIRECTIVES],
   encapsulation: ViewEncapsulation.None
 })
-export class AppComponent {
-  title = 'app works!';
-}
+export class AppComponent {}
