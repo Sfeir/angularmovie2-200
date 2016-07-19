@@ -31,24 +31,26 @@
 
 <!--
 <table class="table table-striped">
-   <thead>
-   <tr>
-       <th>#</th>
-       <th>Titre</th>
-       <th>Réalisateur</th>
-       <th>Année de sortie</th>
-       <th>Note</th>
-   </tr>
-   </thead>
-   <tbody>
-   <tr *ngFor="let movie of movies; let i = index">
-       <td>{{i + 1}}</td>
-       <td><a [routerLink]="['/Editmovie',{id:movie.id}]">{{movie.title}}</a></td>
-       <td>{{movie.directors}}</td>
-       <td>{{movie.releaseYear}}</td>
-       <td>{{movie.rate}}</td>
-   </tr>
-   </tbody>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Titre</th>
+      <th>Réalisateur</th>
+      <th>Année de sortie</th>
+      <th>Note</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies; let i = index">
+      <td>{{i + 1}}</td>
+      <td>
+        <a [routerLink]="['/movies', movie.id]">{{movie.title}}</a>
+      </td>
+      <td>{{movie.directors}}</td>
+      <td>{{movie.releaseYear}}</td>
+      <td>{{movie.rate}}</td>
+    </tr>
+  </tbody>
 </table>
 -->
 
