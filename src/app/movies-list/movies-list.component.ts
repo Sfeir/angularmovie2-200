@@ -18,13 +18,16 @@ import {AddMovieComponent} from '../add-movie/';
 export class MoviesListComponent implements OnInit {
 
   private movies: Array<any>;
+  private lastViewDate: Date;
 
   // access local child Component
   @ViewChild(AddMovieComponent) modal: AddMovieComponent;
 
   constructor(
     private moviesService: MoviesService
-  ) { }
+  ) {
+    this.lastViewDate = new Date();
+  }
 
   ngOnInit() {
     this.movies = [];
