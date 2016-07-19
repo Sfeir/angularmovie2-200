@@ -27,9 +27,20 @@
         <label class="control-label">Acteurs :</label>
         <input type="text" formControlName="actors">
       </div>
-      <div class="control-group">
+      <div class="control-group" [ngClass]="{error:!editForm.controls.rate.valid}">
         <label class="control-label">Note :</label>
         <input type="number" placeholder="entre 1 et 5" formControlName="rate">
+        <div *ngIf="!editForm.controls.rate.valid">
+          <div *ngIf="editForm.controls.rate.errors.number">
+            <span class="help-block">La valeur doit être un nombre</span>
+          </div>
+          <div *ngIf="editForm.controls.rate.errors.min">
+            <span class="help-block">La valeur doit être supérieure à 1</span>
+          </div>
+          <div *ngIf="editForm.controls.rate.errors.max">
+            <span class="help-block">La valeur doit être inférieure à 5</span>
+          </div>
+        </div>
       </div>
     </form>
   </section>

@@ -27,7 +27,7 @@ export class EditMovieComponent implements OnInit {
       releaseYear: ['', Validators.required],
       directors: [''],
       actors: [''],
-      rate: ['']
+      rate: ['', this.getRangeNumberValidator(1,5)]
     });
   }
 
@@ -61,6 +61,34 @@ export class EditMovieComponent implements OnInit {
       .subscribe(() => {
         this.router.navigate(['/movies']);
       });
+  }
+
+  getRangeNumberValidator(min, max) {
+    return (c: FormControl): any => {
+      if (c.value || c.value == 0) {
+        let val = parseInt(c.value);
+        //it's a number ?
+        if (isNaN(val)) {
+          return {
+            number: true
+          }
+        }
+        //it's higher than min
+        if (val < min) {
+          return {
+            min: true
+          }
+        }
+        //it's lower than max
+        if (val > max) {
+          return {
+            max: true
+          }
+        }
+      }
+      // Null means valid
+      return null
+    };
   }
 
 }
