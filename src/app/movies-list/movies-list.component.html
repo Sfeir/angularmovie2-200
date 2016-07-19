@@ -49,7 +49,7 @@
           </h3>
           <p><b>Année de sortie : </b>{{movie.releaseYear}}</p>
           <p><b>Réalisateur : </b>{{movie.directors}}</p>
-          <p><b>Acteurs : </b>{{movie.actors}}</p>
+          <p><b>Acteurs : </b><span lazy="/api/movies/{{movie.id}}/actors">Plus d'infos ...</span></p>
           <p><b>Synopsis : </b>{{movie.synopsis}}</p>
           <p><b>Prix : </b> {{movie.price | currency:'EUR':true}}</p>
           <p><b>Note : </b> {{movie.rate | rate}}</p>

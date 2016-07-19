@@ -5,6 +5,7 @@ import {MoviesService} from '../shared/';
 import {AddMovieComponent} from '../add-movie/';
 import {RatePipe} from '../shared/';
 import {Highlight} from '../shared/';
+import {Lazy} from '../shared/';
 
 @Component({
   moduleId: module.id,
@@ -15,7 +16,8 @@ import {Highlight} from '../shared/';
   directives: [
     AddMovieComponent,
     ROUTER_DIRECTIVES,
-    Highlight
+    Highlight,
+    Lazy
   ],
   providers: [MoviesService]
 })
