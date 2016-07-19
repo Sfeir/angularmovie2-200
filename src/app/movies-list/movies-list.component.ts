@@ -4,6 +4,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 import {MoviesService} from '../shared/';
 import {AddMovieComponent} from '../add-movie/';
 import {RatePipe} from '../shared/';
+import {Highlight} from '../shared/';
 
 @Component({
   moduleId: module.id,
@@ -13,7 +14,8 @@ import {RatePipe} from '../shared/';
   pipes: [RatePipe],
   directives: [
     AddMovieComponent,
-    ROUTER_DIRECTIVES
+    ROUTER_DIRECTIVES,
+    Highlight
   ],
   providers: [MoviesService]
 })
