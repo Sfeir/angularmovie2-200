@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 
@@ -10,7 +11,8 @@ import {AddMovieComponent} from '../add-movie/';
   templateUrl: 'movies-list.component.html',
   styleUrls: ['movies-list.component.css'],
   directives: [
-    AddMovieComponent
+    AddMovieComponent,
+    ROUTER_DIRECTIVES
   ]
 })
 export class MoviesListComponent implements OnInit {

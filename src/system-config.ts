@@ -40,6 +40,7 @@ const barrels: string[] = [
   'app/add-movie',
   'app/home',
   'app/movies-list',
+  'app/edit-movie',
   /** @cli-barrel */
 ];
 
