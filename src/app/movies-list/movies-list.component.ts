@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
-import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
 
+import {MoviesService} from '../shared/';
 import {AddMovieComponent} from '../add-movie/';
 
 @Component({
@@ -13,7 +12,8 @@ import {AddMovieComponent} from '../add-movie/';
   directives: [
     AddMovieComponent,
     ROUTER_DIRECTIVES
-  ]
+  ],
+  providers: [MoviesService]
 })
 export class MoviesListComponent implements OnInit {
 
@@ -23,7 +23,7 @@ export class MoviesListComponent implements OnInit {
   @ViewChild(AddMovieComponent) modal: AddMovieComponent;
 
   constructor(
-    private http: Http
+    private moviesService: MoviesService
   ) { }
 
   ngOnInit() {
@@ -32,25 +32,21 @@ export class MoviesListComponent implements OnInit {
   }
 
   getMovies() {
-    this.http.get('http://localhost:9000/api/movies').map(res => res.json())
-      .subscribe((movies) => {
+    this.moviesService.fetchMovies().subscribe((movies) => {
         this.movies = movies;
       });
   }
 
   addMovie(movie) {
-    this.http.post('http://localhost:9000/api/movies', JSON.stringify(movie), { headers: new Headers({ 'Content-Type': 'application/json' }) })
-      .map(res => res.json())
-      .subscribe((newMovie) => {
+    this.moviesService.addMovie(movie).subscribe((newMovie) => {
         this.movies.push(newMovie);
       });
   }
 
   deleteMovie(index, movie) {
-    this.http.delete(`http://localhost:9000/api/movies/${movie.id}`)
-      .subscribe((resp) => {
-        this.movies.splice(index, 1);
-      });
+    this.moviesService.deleteMovie(index, movie).subscribe(() => {
+      this.movies.splice(index, 1);
+    });
   }
 
   showModal() {
