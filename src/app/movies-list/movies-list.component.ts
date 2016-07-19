@@ -21,6 +21,7 @@ export class MoviesListComponent implements OnInit {
 
   private movies: Array<any>;
   private lastViewDate: Date;
+  private displayTable: boolean;
 
   // access local child Component
   @ViewChild(AddMovieComponent) modal: AddMovieComponent;
@@ -29,6 +30,7 @@ export class MoviesListComponent implements OnInit {
     private moviesService: MoviesService
   ) {
     this.lastViewDate = new Date();
+    this.displayTable = false;
   }
 
   ngOnInit() {
@@ -52,6 +54,10 @@ export class MoviesListComponent implements OnInit {
     this.moviesService.deleteMovie(index, movie).subscribe(() => {
       this.movies.splice(index, 1);
     });
+  }
+
+  switchDisplay() {
+    this.displayTable = !this.displayTable;
   }
 
   showModal() {
