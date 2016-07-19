@@ -3,12 +3,14 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import {MoviesService} from '../shared/';
 import {AddMovieComponent} from '../add-movie/';
+import {RatePipe} from '../shared/';
 
 @Component({
   moduleId: module.id,
   selector: 'app-movies-list',
   templateUrl: 'movies-list.component.html',
   styleUrls: ['movies-list.component.css'],
+  pipes: [RatePipe],
   directives: [
     AddMovieComponent,
     ROUTER_DIRECTIVES
