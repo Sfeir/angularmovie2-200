@@ -1,6 +1,10 @@
 <header class="page-header">
     <h1>
         Ma vidéothèque <small>{{movies.length}} films</small>
+        <button class="btn btn-success">
+          <i class="icon-list icon-white"></i>
+          <i class="icon-th icon-white"></i>
+        </button>
         <button class="btn btn-primary" (click)="showModal()">Ajouter un film</button>
     </h1>
     <span>(dernière consultation:{{lastViewDate | date:'dd/MM/yyyy'}})</span>
@@ -24,5 +28,28 @@
         </div>
     </li>
 </ul>
+
+<!--
+<table class="table table-striped">
+   <thead>
+   <tr>
+       <th>#</th>
+       <th>Titre</th>
+       <th>Réalisateur</th>
+       <th>Année de sortie</th>
+       <th>Note</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr *ngFor="let movie of movies; let i = index">
+       <td>{{i + 1}}</td>
+       <td><a [routerLink]="['/Editmovie',{id:movie.id}]">{{movie.title}}</a></td>
+       <td>{{movie.directors}}</td>
+       <td>{{movie.releaseYear}}</td>
+       <td>{{movie.rate}}</td>
+   </tr>
+   </tbody>
+</table>
+-->
 
 <app-add-movie (movieAdd)="addMovie($event)"></app-add-movie>
