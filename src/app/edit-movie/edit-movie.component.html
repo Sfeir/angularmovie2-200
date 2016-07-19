@@ -3,14 +3,20 @@
     <h3>Modifier le film</h3>
   </header>
   <section class="modal-body">
-    <form class="form-horizontal">
-      <div class="control-group">
+    <form class="form-horizontal" #movieForm="ngForm">
+      <div class="control-group" [ngClass]="{error: title.valid == false}">
         <label class="control-label">Titre :</label>
-        <input type="text" name="title" [(ngModel)]="movie.title">
+        <input type="text" name="title" #title="ngModel" [(ngModel)]="movie.title" required>
+        <div [hidden]="title.valid">
+          <span class="help-block">Ce champs est obligatoire</span>
+        </div>
       </div>
-      <div class="control-group">
+      <div class="control-group" [ngClass]="{error:!releaseYear.valid}">
         <label class="control-label">Année de sortie :</label>
-        <input type="text" name="releaseYear" [(ngModel)]="movie.releaseYear">
+        <input type="text" name="releaseYear" #releaseYear="ngModel" [(ngModel)]="movie.releaseYear" required>
+        <div [hidden]="releaseYear.valid">
+          <span class="help-block">Ce champs est obligatoire</span>
+        </div>
       </div>
       <div class="control-group">
         <label class="control-label">Réalisateur :
@@ -29,7 +35,7 @@
   </section>
   <footer>
     <a [routerLink]="['/movies']" class="btn btn-danger btn-small">Annuler</a>
-    <button class="btn btn-success" (click)="editMovie()">Modifier</button>
+    <button class="btn btn-success" [disabled]="!movieForm.form.valid" (click)="editMovie()">Modifier</button>
   </footer>
 
 </div>
