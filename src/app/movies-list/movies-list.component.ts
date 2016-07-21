@@ -1,67 +1,48 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ROUTER_DIRECTIVES } from '@angular/router';
-
-import {MoviesService} from '../shared/';
 import {AddMovieComponent} from '../add-movie/';
-import {RatePipe} from '../shared/';
-import {Highlight} from '../shared/';
-import {Lazy} from '../shared/';
+import { Http } from '@angular/http';
+import { ROUTER_DIRECTIVES } from '@angular/router';
+import 'rxjs/add/operator/map';
 
 @Component({
   moduleId: module.id,
   selector: 'app-movies-list',
   templateUrl: 'movies-list.component.html',
   styleUrls: ['movies-list.component.css'],
-  pipes: [RatePipe],
   directives: [
     AddMovieComponent,
-    ROUTER_DIRECTIVES,
-    Highlight,
-    Lazy
-  ],
-  providers: [MoviesService]
+    ROUTER_DIRECTIVES
+  ]
 })
 export class MoviesListComponent implements OnInit {
 
   private movies: Array<any>;
-  private lastViewDate: Date;
-  private displayTable: boolean;
 
   // access local child Component
   @ViewChild(AddMovieComponent) modal: AddMovieComponent;
 
   constructor(
-    private moviesService: MoviesService
+    private http: Http
   ) {
-    this.lastViewDate = new Date();
-    this.displayTable = false;
+    this.movies = [];
   }
 
   ngOnInit() {
-    this.movies = [];
-    this.getMovies();
-  }
-
-  getMovies() {
-    this.moviesService.fetchMovies().subscribe((movies) => {
-        this.movies = movies;
-      });
+    this.http
+      .get('http://localhost:9000/api/movies')
+      .map( res => res.json() )
+      .subscribe( data => this.movies = data );
   }
 
   addMovie(movie) {
-    this.moviesService.addMovie(movie).subscribe((newMovie) => {
-        this.movies.push(newMovie);
-      });
+    console.log('clicked', movie);
+    this.movies.push(movie);
   }
 
-  deleteMovie(index, movie) {
-    this.moviesService.deleteMovie(index, movie).subscribe(() => {
-      this.movies.splice(index, 1);
-    });
-  }
-
-  switchDisplay() {
-    this.displayTable = !this.displayTable;
+  deleteMovie(movie, index) {
+    this.http
+      .delete(`http://localhost:9000/api/movies/${movie.id}`)
+      .subscribe( _ => this.movies.splice(index, 1) );
   }
 
   showModal() {

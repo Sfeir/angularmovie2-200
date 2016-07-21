@@ -11,9 +11,6 @@ export class AddMovieComponent implements OnInit {
   movie: Object = {};
   private isOpen: boolean = false;
 
-  // access local child DOM element
-  @ViewChild('modal') modal;
-
   @Output() movieAdd: EventEmitter<any>;
 
   constructor(
