@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, ViewChild, Renderer } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   moduleId: module.id,
@@ -11,14 +11,9 @@ export class AddMovieComponent implements OnInit {
   movie: Object = {};
   private isOpen: boolean = false;
 
-  // access local child DOM element
-  @ViewChild('modal') modal;
-
   @Output() movieAdd: EventEmitter<any>;
 
-  constructor(
-    private renderer: Renderer
-  ) {
+  constructor() {
     this.movieAdd = new EventEmitter();
   }
 
